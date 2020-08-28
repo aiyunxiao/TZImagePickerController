@@ -85,6 +85,13 @@
     [self refreshNaviBarAndBottomBarState];
 }
 
+/// 辅导项目中使用了 FDFullscreenPopGesture
+/// 会导致 TZ 出现两个导航栏, 所以在 TZ 里兼容一下, 如果项目没有 FDFullscreenPopGesture
+/// 这个方法不会有其他影响
+- (BOOL)fd_prefersNavigationBarHidden {
+    return YES;
+}
+
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     TZImagePickerController *tzImagePickerVc = (TZImagePickerController *)self.navigationController;
